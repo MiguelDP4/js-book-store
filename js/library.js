@@ -33,7 +33,11 @@ function hideElement(elementId) {
   form.style.display = 'none';
 }
 
-/* eslint-disable */
+function showElement(elementId) {
+  const form = document.getElementById(elementId);
+  form.style.display = 'block';
+}
+// eslint-disable-next-line  no-unused-vars
 function addBookToLibrary() {
   const title = document.getElementById('title-input').value;
   const author = document.getElementById('author-input').value;
@@ -46,7 +50,7 @@ function addBookToLibrary() {
   document.getElementById('author-input').value = '';
   document.getElementById('pages-input').value = '';
 }
-
+// eslint-disable-next-line  no-unused-vars
 function toggleRead(bookIndex) {
   if (myLibrary[bookIndex].read) {
     myLibrary[bookIndex].read = false;
@@ -58,9 +62,3 @@ function toggleRead(bookIndex) {
   const rowElement = document.getElementById(`book-${bookIndex}`);
   render(anchorString, rowElement);
 }
-
-function showElement(elementId) {
-  let form = document.getElementById(elementId);
-  form.style.display = 'block';
-}
-/* eslint-enable */
