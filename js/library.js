@@ -42,13 +42,23 @@ function addBookToLibrary() {
   const title = document.getElementById('title-input').value;
   const author = document.getElementById('author-input').value;
   const pages = document.getElementById('pages-input').value;
-  myLibrary.push(new Book(title, author, pages));
-  listBooks();
-  hideElement('floating-form');
-  showElement('add-book-button');
-  document.getElementById('title-input').value = '';
-  document.getElementById('author-input').value = '';
-  document.getElementById('pages-input').value = '';
+  console.log(document.getElementById('title-input').value);
+  if(title != '' && author != '' && pages != ''){
+    myLibrary.push(new Book(title, author, pages));
+    listBooks();
+    hideElement('floating-form');
+    showElement('add-book-button');
+    document.getElementById('title-input').value = '';
+    document.getElementById('author-input').value = '';
+    document.getElementById('pages-input').value = '';
+  } else {
+    document.getElementById('floating-form').innerHTML = 
+    document.getElementById('floating-form').innerHTML.concat(
+      `<p class="text-danger text-center">
+      Please fill out all the book information
+      </p>`
+    );
+  }
 }
 // eslint-disable-next-line  no-unused-vars
 function toggleRead(bookIndex) {
