@@ -42,7 +42,6 @@ function cleanFields() {
   document.getElementById('title-input').value = '';
   document.getElementById('author-input').value = '';
   document.getElementById('pages-input').value = '';
-  document.getElementById('empty-warning').innerHTML = '';
 }
 
 // eslint-disable-next-line  no-unused-vars
@@ -57,15 +56,16 @@ function addBookToLibrary() {
   const title = document.getElementById('title-input').value;
   const author = document.getElementById('author-input').value;
   const pages = document.getElementById('pages-input').value;
-  if (title !== '' && author !== '' && pages !== '') {
+
+  if (title === '' || author === '' || pages === '') {
+    showElement('empty-warning');
+  }
+  else {
     myLibrary.push(new Book(title, author, pages));
     listBooks();
     hideElement('floating-form');
-    hideElement('empty-warning');
     showElement('add-book-button');
     cleanFields();
-  } else {
-    showElement('empty-warning');
   }
 }
 // eslint-disable-next-line  no-unused-vars
