@@ -37,6 +37,13 @@ function showElement(elementId) {
   const form = document.getElementById(elementId);
   form.style.display = 'block';
 }
+
+// eslint-disable-next-line  no-unused-vars
+function closeModal() {
+  hideElement('floating-form');
+  showElement('add-book-button');
+}
+
 // eslint-disable-next-line  no-unused-vars
 function addBookToLibrary() {
   const title = document.getElementById('title-input').value;

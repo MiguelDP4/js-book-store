@@ -14,15 +14,16 @@
     <div id="floating-form">
       <h1>Library</h1>
       <div class="input-group mb-3">
-        <input id="title-input" type="text" class="form-control" placeholder="Title" aria-label="Title" aria-describedby="basic-addon1">
+        <input id="title-input" type="text" class="form-control" placeholder="Title" aria-label="Title" aria-describedby="basic-addon1" required>
       </div>
       <div class="input-group mb-3">
-        <input id="author-input" type="text" class="form-control" placeholder="Author" aria-label="Author" aria-describedby="basic-addon1">
+        <input id="author-input" type="text" class="form-control" placeholder="Author" aria-label="Author" aria-describedby="basic-addon1" required>
       </div>
-      <div class="input-group mb-3">
-        <input id="pages-input" type="text" class="form-control" placeholder="Pages" aria-label="Pages" aria-describedby="basic-addon1">
+      <div class="input-group mb-3">        
+        <input id="pages-input" placeholder="Enter a number" required type="number" value="" min="-100" max="100"/>
       </div>
       <button type="button" onclick="addBookToLibrary()" class="btn btn-primary">Insert Book</button>
+      <button type="button" onclick="closeModal()" class="btn btn-secondary">Cancel</button>
     </div>
     <div>
       <table class="table">
