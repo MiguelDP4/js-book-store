@@ -5,23 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="style/style.css">
 
     <title>JS Library</title>
   </head>
   <body>
-    <h1>Library</h1>
-    <div class="input-group mb-3">
-      <input id="title-input" type="text" class="form-control" placeholder="Title" aria-label="Title" aria-describedby="basic-addon1">
+    <button id="add-book-button" onclick="showElement('floating-form'), hideElement('add-book-button')" class="btn btn-primary">Add Book</button>
+    <div id="floating-form">
+      <h1>Library</h1>
+      <div class="input-group mb-3">
+        <input id="title-input" type="text" class="form-control" placeholder="Title" aria-label="Title" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group mb-3">
+        <input id="author-input" type="text" class="form-control" placeholder="Author" aria-label="Author" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group mb-3">
+        <input id="pages-input" type="text" class="form-control" placeholder="Pages" aria-label="Pages" aria-describedby="basic-addon1">
+      </div>
+      <button type="button" onclick="addBookToLibrary()" class="btn btn-primary">Insert Book</button>
     </div>
-    <div class="input-group mb-3">
-      <input id="author-input" type="text" class="form-control" placeholder="Author" aria-label="Author" aria-describedby="basic-addon1">
-    </div>
-    <div class="input-group mb-3">
-      <input id="pages-input" type="text" class="form-control" placeholder="Pages" aria-label="Pages" aria-describedby="basic-addon1">
-    </div>
-    <button type="button" onclick="addBookToLibrary()" class="btn btn-primary">Insert Book</button>
-
-
     <div>
       <table class="table">
         <thead>
