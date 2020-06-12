@@ -1,4 +1,4 @@
-let myLibrary = [];
+const myLibrary = [];
 
 class Book {
   constructor(title, author, pages) {
@@ -9,42 +9,42 @@ class Book {
   }
 }
 
-let getTitle = function() {
-  return document.getElementById('title-input').value;
-}
-
-let getAuthor = function() {
-  return document.getElementById('author-input').value;
-}
-
-let getPages = function() {
-  return document.getElementById('pages-input').value;
-}
-
-function addBookToLibrary() {
-  myLibrary.push(new Book(getTitle(), getAuthor(), getPages()));
-  console.log(myLibrary);
-  listBooks();
-}
-
-let render = function(content, container){
+function render(content, container) {
   container.innerHTML = content;
 }
 
-let writeSomething = function(text){
-  render(`<h2>${text}</h2>`, document.getElementById("book-container"));
+function listBooks() {
+  let fullList = '';
+  for (let i = 0; i < myLibrary.length; i += 1) {
+    fullList += `<tr>
+                              <th scope="row">${i + 1}</th>
+                              <th scope="row">${myLibrary[i].title}</th>
+                              <td scope="row">${myLibrary[i].author}</td>
+                              <td scope="row">${myLibrary[i].pages}</td>
+                              <td scope="row" id="book-${i}"><a href="#" onclick="toggleRead('${i}')">${myLibrary[i].read ? 'Already read' : 'Not read yet'}</a></td>
+                            </tr>`;
+  }
+  const tableList = document.getElementById('list-books');
+  render(fullList, tableList);
+}
+/* eslint-disable */
+function addBookToLibrary() {
+  const title = document.getElementById('title-input').value;
+  const author = document.getElementById('author-input').value;
+  const pages = document.getElementById('pages-input').value;
+  myLibrary.push(new Book(title, author, pages));
+  listBooks();
 }
 
-let listBooks = function(){
-  let full_list = ""; 
-  for (let i=0; i<myLibrary.length; i++){
-    full_list = full_list + `<tr>
-                              <th scope="row">${myLibrary[i].title}</th>
-                              <td>${myLibrary[i].author}</td>
-                              <td>${myLibrary[i].pages}</td>
-                              <td>${myLibrary[i].read? 'It was readed': 'no read yet'}</td>
-                            </tr>`;
-  } 
-  let table_list =  document.getElementById('list-books');
-  render(full_list, table_list); 
+function toggleRead(bookIndex) {
+  if (myLibrary[bookIndex].read) {
+    myLibrary[bookIndex].read = false;
+  } else {
+    myLibrary[bookIndex].read = true;
+  }
+  const anchorString = `<a href="#" onclick="toggleRead('${bookIndex}')">${myLibrary[bookIndex].read
+    ? 'Already read' : 'Not read yet'}</a>`;
+  const rowElement = document.getElementById(`book-${bookIndex}`);
+  render(anchorString, rowElement);
 }
+/* eslint-enable */
