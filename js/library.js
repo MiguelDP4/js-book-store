@@ -57,10 +57,9 @@ function addBookToLibrary() {
       `<p class="text-danger text-center">
       Please fill out all the book information
       </p>`
-    );
+    ); 
   }
 }
-// eslint-disable-next-line  no-unused-vars
 function toggleRead(bookIndex) {
   if (myLibrary[bookIndex].read) {
     myLibrary[bookIndex].read = false;
