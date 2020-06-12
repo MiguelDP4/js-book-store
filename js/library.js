@@ -24,6 +24,7 @@ let getPages = function() {
 function addBookToLibrary() {
   myLibrary.push(new Book(getTitle(), getAuthor(), getPages()));
   console.log(myLibrary);
+  listBooks();
 }
 
 let render = function(content, container){
@@ -32,4 +33,18 @@ let render = function(content, container){
 
 let writeSomething = function(text){
   render(`<h2>${text}</h2>`, document.getElementById("book-container"));
+}
+
+let listBooks = function(){
+  let full_list = ""; 
+  for (let i=0; i<myLibrary.length; i++){
+    full_list = full_list + `<tr>
+                              <th scope="row">${myLibrary[i].title}</th>
+                              <td>${myLibrary[i].author}</td>
+                              <td>${myLibrary[i].pages}</td>
+                              <td>${myLibrary[i].read? 'It was readed': 'no read yet'}</td>
+                            </tr>`;
+  } 
+  let table_list =  document.getElementById('list-books');
+  render(full_list, table_list); 
 }
