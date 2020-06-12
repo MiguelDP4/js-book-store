@@ -42,8 +42,7 @@ function addBookToLibrary() {
   const title = document.getElementById('title-input').value;
   const author = document.getElementById('author-input').value;
   const pages = document.getElementById('pages-input').value;
-  console.log(document.getElementById('title-input').value);
-  if(title != '' && author != '' && pages != ''){
+  if (title !== '' && author !== '' && pages !== '') {
     myLibrary.push(new Book(title, author, pages));
     listBooks();
     hideElement('floating-form');
@@ -51,15 +50,16 @@ function addBookToLibrary() {
     document.getElementById('title-input').value = '';
     document.getElementById('author-input').value = '';
     document.getElementById('pages-input').value = '';
+    document.getElementById('empty-warning').innerHTML = '';
   } else {
-    document.getElementById('floating-form').innerHTML = 
-    document.getElementById('floating-form').innerHTML.concat(
-      `<p class="text-danger text-center">
+    document.getElementById('floating-form').innerHTML = document.getElementById('floating-form').innerHTML.concat(
+      `<p id="empty-warning" class="text-danger text-center">
       Please fill out all the book information
-      </p>`
-    ); 
+      </p>`,
+    );
   }
 }
+// eslint-disable-next-line  no-unused-vars
 function toggleRead(bookIndex) {
   if (myLibrary[bookIndex].read) {
     myLibrary[bookIndex].read = false;
