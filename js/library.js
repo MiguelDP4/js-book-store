@@ -59,8 +59,7 @@ function addBookToLibrary() {
 
   if (title === '' || author === '' || pages === '') {
     showElement('empty-warning');
-  }
-  else {
+  } else {
     myLibrary.push(new Book(title, author, pages));
     listBooks();
     hideElement('floating-form');
