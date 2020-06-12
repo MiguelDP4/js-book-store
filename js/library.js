@@ -38,10 +38,18 @@ function showElement(elementId) {
   form.style.display = 'block';
 }
 
+function cleanFields() {
+  document.getElementById('title-input').value = '';
+  document.getElementById('author-input').value = '';
+  document.getElementById('pages-input').value = '';
+  document.getElementById('empty-warning').innerHTML = '';
+}
+
 // eslint-disable-next-line  no-unused-vars
 function closeModal() {
   hideElement('floating-form');
   showElement('add-book-button');
+  cleanFields();
 }
 
 // eslint-disable-next-line  no-unused-vars
@@ -53,17 +61,11 @@ function addBookToLibrary() {
     myLibrary.push(new Book(title, author, pages));
     listBooks();
     hideElement('floating-form');
+    hideElement('empty-warning');
     showElement('add-book-button');
-    document.getElementById('title-input').value = '';
-    document.getElementById('author-input').value = '';
-    document.getElementById('pages-input').value = '';
-    document.getElementById('empty-warning').innerHTML = '';
+    cleanFields();
   } else {
-    document.getElementById('floating-form').innerHTML = document.getElementById('floating-form').innerHTML.concat(
-      `<p id="empty-warning" class="text-danger text-center">
-      Please fill out all the book information
-      </p>`,
-    );
+    showElement('empty-warning');
   }
 }
 // eslint-disable-next-line  no-unused-vars
